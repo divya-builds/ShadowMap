@@ -1,126 +1,166 @@
+
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 function Home() {
+  
+const features = [
+  {
+    icon: "☀",
+    title: "Solar Analysis",
+    description: "Understand rooftop sunlight exposure.",
+    to: "/analyze",
+  },
+  {
+    icon: "⌖",
+    title: "Location Insights",
+    description: "Explore rooftops around your location.",
+    to: "/analyze",
+  },
+  {
+    icon: "▥",
+    title: "Smart Insights",
+    description: "Understand your rooftop analysis.",
+    to: "/dashboard",
+  },
+  {
+    icon: "♧",
+    title: "Greener Tomorrow",
+    description: "Make smarter solar energy choices.",
+    to: "/dashboard",
+  },
+];
+
+
   return (
-    <div>
+    <div className="home-page">
       <Navbar />
 
       {/* HERO SECTION */}
       <section className="hero">
         <div className="hero-content">
-          <p className="tagline">AI-POWERED SOLAR ANALYSIS</p>
+          <span className="hero-tag">
+            ☀ AI-POWERED SOLAR ANALYSIS
+          </span>
 
           <h1>
-            Find the
-            <span> Best Spot </span>
-            for Solar.
+            Find Your
+            <br />
+            <span>Solar</span> Potential.
           </h1>
 
           <p className="hero-text">
-            ShadowMap analyzes rooftop sunlight, shadows and obstacles
-            to help identify areas suitable for solar panel installation.
+            Explore sunlight, shading and rooftop solar
+            opportunities with ShadowMap.
           </p>
 
           <div className="hero-buttons">
             <Link to="/analyze" className="primary-btn">
-              Analyze My Rooftop →
+              ▶ Start Analysis <span>→</span>
             </Link>
-
-            <a href="#how-it-works" className="secondary-btn">
-              How It Works
-            </a>
           </div>
         </div>
 
         <div className="hero-visual">
-          <div className="sun">☀</div>
+          <div className="sun-glow"></div>
+          <div className="sun-icon">☀</div>
 
-          <div className="rooftop">
-            <div className="panel-grid">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+          <div className="house">
+            <div className="house-roof">
+              <div className="solar-panels">
+                {Array.from({ length: 9 }).map((_, index) => (
+                  <div className="solar-panel" key={index}></div>
+                ))}
+              </div>
+            </div>
+
+            <div className="house-body">
+              <div className="house-window"></div>
+              <div className="house-door"></div>
+              <div className="house-window"></div>
             </div>
           </div>
 
-          <div className="shadow-shape"></div>
+          <div className="house-ground"></div>
         </div>
       </section>
 
-      {/* PROBLEM */}
-      <section className="problem-section">
-        <p className="section-label">THE PROBLEM</p>
+      {/* FEATURES */}
+      <section className="features-section">
+        {features.map((feature, index) => (
+          
+<Link to={feature.to} className="feature-card" key={index}>
+  <div className="feature-icon">{feature.icon}</div>
 
-        <h2>
-          Not every part of a rooftop gets
-          <span> equal sunlight.</span>
-        </h2>
+  <div className="feature-content">
+    <h3>{feature.title}</h3>
+    <p>{feature.description}</p>
+  </div>
 
-        <p>
-          Buildings, trees, water tanks and other obstacles can create
-          shadows and reduce the efficiency of solar panels.
-          ShadowMap helps visualize these areas before installation.
-        </p>
+  <span className="feature-arrow">→</span>
+</Link>
+
+        ))}
       </section>
 
-      {/* HOW IT WORKS */}
-      <section id="how-it-works" className="how-section">
-        <p className="section-label">HOW IT WORKS</p>
+      {/* LOCATION ANALYSIS */}
+      <section className="location-section">
+        <div className="location-content">
+          <span className="quick-start">⚡ Quick Start</span>
 
-        <h2>Three simple steps</h2>
+          <h2>Analyze Any Location</h2>
 
-        <div className="steps">
-          <div className="step-card">
-            <div className="step-number">01</div>
-            <h3>Select Location</h3>
-            <p>
-              Enter your location or provide a rooftop image for analysis.
-            </p>
-          </div>
+          <p>
+            Search for an address or upload a rooftop image
+            to begin exploring its solar potential.
+          </p>
 
-          <div className="step-card">
-            <div className="step-number">02</div>
-            <h3>Analyze Shadows</h3>
-            <p>
-              ShadowMap identifies rooftop areas affected by obstacles
-              and limited sunlight.
-            </p>
-          </div>
+          <Link to="/analyze" className="location-btn">
+            Start Exploring <span>→</span>
+          </Link>
+        </div>
 
-          <div className="step-card">
-            <div className="step-number">03</div>
-            <h3>Get Insights</h3>
-            <p>
-              View a suitability map and identify potentially better
-              areas for solar installation.
-            </p>
+        <div className="location-visual">
+          
+<div className="map-preview">
+  <div className="map-road road-one"></div>
+  <div className="map-road road-two"></div>
+
+  <div className="map-building building-one"></div>
+  <div className="map-building building-two"></div>
+  <div className="map-building building-three"></div>
+
+  <div className="map-park"></div>
+  
+
+  <div className="map-label map-label-one">
+    ROOFTOP AREA
+  </div>
+
+  <div className="map-label map-label-two">
+    GREEN ZONE
+  </div>
+
+  <div className="map-compass">N</div>
+
+  <div className="map-pin">⌖</div>
+</div>
+
+
+          <div className="potential-card">
+            <h3>☀ Solar Potential</h3>
+            <div className="potential-circle">92%</div>
+            <span>Illustrative Preview</span>
+            <p>Explore your rooftop to get an analysis.</p>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta-section">
-        <h2>Ready to explore your rooftop?</h2>
-
-        <p>
-          Turn rooftop data into smarter solar planning.
-        </p>
-
-        <Link to="/analyze" className="primary-btn">
-          Start Analysis →
-        </Link>
-      </section>
-
-      <footer>
-        <div>☀ ShadowMap</div>
-        <p>AI-Powered Solar Rooftop Analysis</p>
+      {/* FOOTER */}
+      <footer className="home-footer">
+        <h3>☀ Shadow<span>Map</span></h3>
+        <p>Explore sunlight. Discover solar potential.</p>
+        <p>© 2026 ShadowMap</p>
       </footer>
     </div>
   );
